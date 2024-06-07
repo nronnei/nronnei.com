@@ -1,0 +1,23 @@
+---
+import Header from '../components/Header.astro';
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string,
+  bgImageClass: string | undefined,
+  modifiers: string[] | undefined,
+}
+
+const { title, bgImageClass = 'bg-hero-pattern', modifiers } = Astro.props;
+const displayClasses = [ "w-screen", "h-screen", "bg-cover" ]
+const modifierClasses = modifiers || ["saturate-150", "contrast-125"]
+
+const classes =  displayClasses.concat(modifierClasses, [bgImageClass]).join(" ")
+---
+
+<Layout title={title}>
+	<main class={classes}>
+        <Header />
+		<slot />
+	</main>
+</Layout>
