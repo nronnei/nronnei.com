@@ -1,17 +1,40 @@
 ---
+import Card from '../components/Card.astro';
 import HeroLayout from '../layouts/HeroLayout.astro';
+import Hero from '../components/Hero.astro'
 
-const modifiers = ["saturate-150", "contrast-125", "flex", "flex-col"];
-const contentClasses = ["container", "px-4", "mx-auto", "flex-grow"].join(" ")
+const modifiers = ["saturate-150", "flex", "flex-col"];
+const contentClasses = [
+    "container",
+    "px-4",
+    "mx-auto",
+    "flex",
+    "flex-col",
+    "flex-grow",
+    "justify-center",
+].join(" ")
+
 ---
 
-<HeroLayout title="Nick Ronnei" bgImageClass='bg-hero-pattern' modifiers={modifiers}>
-    <div class={contentClasses}>
-        <h1 class="text-5xl md:text-7xl font-bold text-white pt-28">Nick Ronnei</h1>
-        <p class="text-white text-lg">Full Stack & Cloud Engineer, Aspiring Architect</p>
-    </div>
-    <div class={`${contentClasses} text-right`}>
-        <h2 class="text-3xl md:text-4xl font-bold">Thanks for stopping by</h2>
-        <p>Check out my blog, projects, or resume.</p>
-    </div>
+<HeroLayout title="Nick Ronnei">
+    <Hero bgImageClass='bg-hero-pattern-alt' modifiers={modifiers}>
+        <div class={`${contentClasses} flex flex-col justify-center text-right text-black`}>
+            <h1 class="text-5xl md:text-7xl font-bold">Nick Ronnei</h1>
+            <p class="text-lg">Full Stack & Cloud Engineer, Aspiring Architect</p>
+        </div>
+        <div class={`${contentClasses} text-white`}>
+            <h2 class="text-3xl md:text-4xl font-bold">Thanks for stopping by</h2>
+            <p>Check out my blog, projects, or resume.</p>
+        </div>
+    </Hero>
+    <section class="container mx-auto py-6">
+        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-black">
+            Latest Posts
+        </h2>
+        <div class="flex justify-center gap-4">
+            <Card title='Blog Post 1' body='Lorem ipsum dolor set.' href='#'/>
+            <Card title='Blog Post 2' body='Lorem ipsum dolor set.' href='#'/>
+            <Card title='Blog Post 3' body='Lorem ipsum dolor set.' href='#'/>
+        </div>
+    </section>
 </HeroLayout>

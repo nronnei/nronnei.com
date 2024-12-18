@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+
+const pageTitle = "My Astro Learning Blog";
+const allPosts = await getCollection("posts");
+---
+<Layout title={pageTitle}>
+  <p>This is where I will post about my journey learning Astro.</p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <Card
+          href={`/posts/${post.slug}/`}
+          title={post.data.title}
+          body={post.data.author.id}/>
+      ))
+    }
+  </ul>
+</Layout>

@@ -1,13 +1,26 @@
 ---
 import { MainNav } from "./Navigation"
+
+interface Props {
+    sticky?: boolean,
+    transparent?: boolean,
+    extraClasses?: string,
+    position?: 'right' | 'left'
+}
+const { sticky, transparent, extraClasses = "", position = "left" } = Astro.props;
+
+// I think I was planning to use this for a light background on heros, but it's too obvious
+const fancyTransparentGradient = ["bg-gradient-to-b", "from-transparent", "to-white"]
+
+const base = ["w-100", "z-50", "h-16", "p-2", "overflow-hidden"]
+const positioning = sticky ? ["fixed", "top-0", "left-0", "right-0"] : [];
+const bgColors = transparent ? [] :  ["dark:bg-slate-800", "dark:text-sky-400", "bg-slate-50", "text-black"]
+
+const wrapperClasses = [...base, ...positioning, ...bgColors].join(" ");
+const linkColors = transparent ? ["dark:text-white", "dark:hover:text-yellow-500", "text-black", "hover:text-yellow-600"] : undefined;
 ---
 <html lang="en">
-    <div class="w-100 dark:bg-slate-800 text-sky-400">
-        <div class="md:container mx-auto flex items-center p-2">
-            <div class="w-12 h-12 rounded-full bg-emerald-700 flex justify-center items-center mr-4">
-                <p class="text-lg font-bold text-white">NR</p>
-            </div>
-            <MainNav class:list="mx-4" />
-        </div>
+    <div class=`${wrapperClasses}`>
+        <MainNav linkColors={linkColors} position={position}/>
     </div>
 </html>

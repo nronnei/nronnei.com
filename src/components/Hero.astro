@@ -1,0 +1,24 @@
+---
+interface Props {
+  bgImageClass: string | undefined,
+  modifiers: string[] | undefined,
+}
+
+const { bgImageClass = 'bg-hero-pattern', modifiers } = Astro.props;
+const modifierClasses = modifiers || ["saturate-150", "contrast-125", "dark:brightness:50"]
+
+// Let bg stuff be overridden, but not the flex grow.
+const classes = [
+    "bg-cover",
+    ...modifierClasses,
+    bgImageClass,
+    "h-screen",
+    "w-screen"
+].join(" ");
+---
+
+<html>
+    <section class={classes}>
+        <slot />
+    </section>
+</html>
