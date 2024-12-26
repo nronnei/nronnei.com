@@ -1,21 +1,26 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
+import { getCollection, getEntry } from "astro:content";
+import CollectionLayout from "../../layouts/CollectionLayout.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
 
-const pageTitle = "My Astro Learning Blog";
 const allPosts = await getCollection("posts");
+// Sort posts in descending order by published date, then name
+allPosts.sort((a, b) => {
+  let score = 0;
+
+  if (a.data.published < b.data.published) score += 10;
+  else if (a.data.published > b.data.published) score  -= 10;
+  else {
+    if (a.id < b.id) score += 1
+    else score -= 1
+  }
+  return score;
+})
 ---
-<Layout title={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
+<CollectionLayout collectionType="posts" extraContainerClasses={["max-w-screen-lg"]}>
+  <ul class="grid grid-cols-1 md:grid-cols-2">
     {
-      allPosts.map((post) => (
-        <Card
-          href={`/posts/${post.slug}/`}
-          title={post.data.title}
-          body={post.data.author.id}/>
-      ))
+      allPosts.map((post) => ( <BlogPostCard post={post} /> ))
     }
   </ul>
-</Layout>
+</CollectionLayout>

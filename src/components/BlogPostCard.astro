@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntries } from 'astro:content';
+
+interface Props {
+	post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const authors = await getEntries(post.data.authors)
+const authorNames: string = authors.map(a => a.data.name).join(", ")
+
+const classes = {
+	container: [ "block", "p-6", "m-6", "bg-white", "border", "border-gray-200", "rounded-lg", "shadow", "hover:bg-gray-100", "dark:bg-gray-800", "dark:border-gray-700", "dark:hover:bg-gray-700", ],
+	title: [ "mb-2", "text-2xl", "font-bold", "text-gray-900", `dark:text-sky-500`, ],
+	author: [ "font-normal", "text-sm", "text-gray-700", "dark:text-gray-400", "overflow-clip", ],
+	date:[ "font-normal", "text-sm", "text-gray-700", "dark:text-gray-400", "overflow-clip", ],
+	subtitle: [ "font-normal", "mt-6", "text-md", "text-gray-700", "dark:text-gray-200", "h-12", "overflow-clip" ],
+}
+
+---
+
+<li class={classes.container.join(" ")}>
+	<a href={`/posts/${post.id}`}>
+		<h2 class={classes.title.join(" ")}>
+			{post.data.title}
+		</h2>
+		<p class={classes.author.join(" ")}>
+			{authorNames}
+		</p>
+		<p class={classes.date.join(" ")}>
+			{post.data.published.toISOString().slice(0, 10)}
+		</p>
+		<p class={classes.subtitle.join(" ")}>
+			{post.data.excerpt}
+		</p>
+	</a>
+</li>

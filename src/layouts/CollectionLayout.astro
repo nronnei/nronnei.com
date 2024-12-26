@@ -1,0 +1,20 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+	collectionType: string;
+	extraContainerClasses?: string[];
+}
+
+const { collectionType, extraContainerClasses = ["lg:max-w-3xl"] } = Astro.props;
+const mainClasses = [ "mt-20", "p-4", "mx-auto", ...extraContainerClasses]
+---
+
+<Layout title={collectionType} header={{}}>
+  <main class={mainClasses.join(" ")}>
+    <div class="mb-6 text-gray-900 dark:text-sky-500">
+        <h1 class="lg:text-3xl text-2xl font-bold">{collectionType}</h1>
+    </div>
+    <slot />
+  </main>
+</Layout>

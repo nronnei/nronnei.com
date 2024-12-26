@@ -1,5 +1,4 @@
 ---
-import Card from '../components/Card.astro';
 import HeroLayout from '../layouts/HeroLayout.astro';
 import Hero from '../components/Hero.astro'
 
@@ -27,14 +26,4 @@ const contentClasses = [
             <p>Check out my blog, projects, or resume.</p>
         </div>
     </Hero>
-    <section class="container mx-auto py-6">
-        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-black">
-            Latest Posts
-        </h2>
-        <div class="flex justify-center gap-4">
-            <Card title='Blog Post 1' body='Lorem ipsum dolor set.' href='#'/>
-            <Card title='Blog Post 2' body='Lorem ipsum dolor set.' href='#'/>
-            <Card title='Blog Post 3' body='Lorem ipsum dolor set.' href='#'/>
-        </div>
-    </section>
 </HeroLayout>

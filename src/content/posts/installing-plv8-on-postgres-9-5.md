@@ -1,10 +1,12 @@
 ---
 title: Installing PL/v8 on Postgres 9.5
-author: nick-ronnei
+excerpt: Quickly install and verify the PL/v8 Postgres Extension
+authors:
+  - nronnei
 published: 2016-10-04
 tags:
   - database
-  - postgresql
+  - postgres
   - plv8
 ---
 <!-- Post Content -->

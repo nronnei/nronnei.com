@@ -1,0 +1,32 @@
+---
+import HeroLayout from '../layouts/HeroLayout.astro';
+import Hero from '../components/Hero.astro'
+
+const modifiers = ["saturate-150", "flex", "flex-col"];
+const contentClasses = [
+    "max-w-screen-md",
+    "px-4",
+    "mx-auto",
+    "flex",
+    "flex-col",
+    "flex-grow",
+    "justify-center",
+].join(" ")
+
+---
+
+<HeroLayout title="Nick Ronnei">
+    <Hero bgImageClass='bg-hero-pattern' modifiers={modifiers}>
+        <div class={`${contentClasses}`}>
+            <h1 class="text-5xl font-bold mb-4">About</h1>
+            <p class="text-lg mb-4">
+                This website is mostly for me, but maybe it can be useful to you, too.
+            </p>
+            <p class="text-lg mb-4">
+                I built this as a way to keep pushing myself to learn new things, and
+                as a way to practice explaining both the "what" and the "why" behind some
+                of the things I've learned over the years working in tech.
+            </p>
+        </div>
+    </Hero>
+</HeroLayout>

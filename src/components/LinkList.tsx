@@ -3,6 +3,7 @@ import {createSignal, For} from 'solid-js';
 
 export interface LinkListProps {
     links: LinkData[],
+    containerClasses?: string [],
     linkColors?: string[],
     position?: 'right' | 'left',
 }
@@ -15,7 +16,7 @@ const defaultLinkColors = [
 ];
 
 export function LinkList(props: LinkListProps) {
-    const { linkColors = defaultLinkColors, position = "left"} = props
+    const { linkColors = defaultLinkColors, position = "left", containerClasses = ["mt-2"]} = props
     const [links, setNavItems] = createSignal<LinkData[]>(props.links)
     const linkPositions = position == "right" ? ["ml-2"] : ["mr-2", "flex-row-reverse"]
     const linkClasses = [ 
@@ -26,7 +27,7 @@ export function LinkList(props: LinkListProps) {
     ].join(' ')
 
     return (
-        <div>
+        <div class={containerClasses.join(" ")}>
             <For each={links()}>
                 { ({ title, url, external }) => (<a class={linkClasses} href={url} target={ external ? "_blank": ""} >{title}</a>) }
             </For>
