@@ -1,9 +1,9 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import CollectionLayout from "../../layouts/CollectionLayout.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
 
-const allPosts = await getCollection("posts");
+const allPosts = await getCollection("posts", (post) => !post.data.draft );
 // Sort posts in descending order by published date, then name
 allPosts.sort((a, b) => {
   let score = 0;

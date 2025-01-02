@@ -2,6 +2,7 @@
 title: A Basic AFT Deployment
 authors:
     - nronnei
+draft: true
 excerpt: An example of a basic deployment of Account Factory for Terraform (AFT) on AWS.
 published: 2024-12-25
 tags:

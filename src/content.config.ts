@@ -17,6 +17,7 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     excerpt: z.string().optional(),
+    draft: z.boolean().optional().default(false),
     // authors: z.array(z.string()),
     authors: z.array(reference('authors')),
     tags: z.array(z.string()),
