@@ -16,4 +16,32 @@ const { Content } = await render(post);
     <Prose>
         <Content post={post}/>
     </Prose>
+    <script>
+        async function renderDiagrams(graphs: HTMLCollectionOf<Element>) {
+         const {default: mermaid} = await import("mermaid")
+         mermaid.initialize({
+           startOnLoad: false,
+           // @ts-ignore This works, but TS expects a enum for some reason
+           // theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default",
+           theme: "base",
+         })
+   
+         for (const graph of graphs) {
+           const content = graph.getAttribute("data-content")
+           if (!content) continue
+           let svg = document.createElement("svg")
+           const id = (svg.id = "mermaid-" + Math.round(Math.random() * 100000))
+           graph.appendChild(svg)
+           mermaid.render(id, content).then(result => {
+             graph.innerHTML = result.svg
+           })
+         }
+       }
+       console.log('entered')
+       const graphs = document.getElementsByClassName("mermaid")
+       console.log("found " + graphs.length + " graphs")
+       if (document.getElementsByClassName("mermaid").length > 0) {
+         renderDiagrams(graphs);
+       }
+     </script>
 </PostLayout>

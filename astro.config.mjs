@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 import solidJs from "@astrojs/solid-js";
-import { rehypeShiki } from '@astrojs/markdown-remark'
-import rehypeMermaid from 'rehype-mermaid'
 import tailwind from "@astrojs/tailwind";
+import { mermaid } from './src/plugins/mermaid';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,10 +11,6 @@ export default defineConfig({
     locales: ["es", "en"]
   },
   markdown: {
-    rehypePlugins: [
-      rehypeMermaid,
-      rehypeShiki,
-    ],
-    syntaxHighlight: false,
+    remarkPlugins: [ mermaid ],
   },
 });
