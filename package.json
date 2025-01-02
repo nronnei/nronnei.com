@@ -19,7 +19,6 @@
     "rehype-mermaid": "^3.0.0",
     "solid-js": "^1.8.17",
     "typescript": "^5.4.5",
-    "vercel": "^39.2.2",
     "vite": "^5.4.11"
   },
   "devDependencies": {
