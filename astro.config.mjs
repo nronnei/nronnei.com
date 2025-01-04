@@ -12,5 +12,6 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [ mermaid ],
+    syntaxHighlight: "shiki"
   },
 });

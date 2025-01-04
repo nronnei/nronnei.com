@@ -21,9 +21,7 @@ const { Content } = await render(post);
          const {default: mermaid} = await import("mermaid")
          mermaid.initialize({
            startOnLoad: false,
-           // @ts-ignore This works, but TS expects a enum for some reason
-           // theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default",
-           theme: "base",
+           theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default",
          })
    
          for (const graph of graphs) {
@@ -37,9 +35,8 @@ const { Content } = await render(post);
            })
          }
        }
-       console.log('entered')
+
        const graphs = document.getElementsByClassName("mermaid")
-       console.log("found " + graphs.length + " graphs")
        if (document.getElementsByClassName("mermaid").length > 0) {
          renderDiagrams(graphs);
        }
