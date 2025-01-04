@@ -4,6 +4,7 @@ import type { LinkData } from '../types';
 import Layout from './Layout.astro';
 import { LinkList } from '../components/LinkList';
 import { getEntries } from 'astro:content';
+import { Footer } from '../components/Footer';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -45,4 +46,5 @@ const authorLinks: LinkData[] = authors.map((a) => {
       <slot />
     </article>
   </main>
+  <Footer />
 </Layout>

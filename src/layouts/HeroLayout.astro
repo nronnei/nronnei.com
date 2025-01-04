@@ -1,19 +1,24 @@
 ---
 import { Footer } from '../components/Footer';
+import Hero from '../components/Hero.astro';
 import Layout from './Layout.astro';
 
 interface Props {
   title: string
+  bgImageClass?: string
+  bgModifiers?: string[]
+  header?: { transparent?: boolean, sticky?: boolean }
 }
 
-const { title } = Astro.props;
+const { title, header = {}, bgImageClass = 'bg-hero-pattern', bgModifiers = [] } = Astro.props;
+const mergedHeader = Object.assign({}, { transparent: true, sticky: true }, header)
 ---
 
-<Layout title={title} header={{ transparent: true }}>
-  <div>
-    <main>
+<Layout title={title} header={mergedHeader}>
+  <main>
+    <Hero bgImageClass={bgImageClass} modifiers={bgModifiers}>
       <slot />
-    </main>
-    <Footer />
-  </div>
+      <Footer />
+    </Hero>
+  </main>
 </Layout>

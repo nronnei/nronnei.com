@@ -5,7 +5,6 @@ import Hero from '../components/Hero.astro'
 const modifiers = ["saturate-150", "flex", "flex-col"];
 const contentClasses = [
     "max-w-screen-md",
-    "px-4",
     "mx-auto",
     "flex",
     "flex-col",
@@ -15,10 +14,15 @@ const contentClasses = [
 
 ---
 
-<HeroLayout title="Nick Ronnei">
-    <Hero bgImageClass='bg-hero-pattern' modifiers={modifiers}>
-        <div class={`${contentClasses}`}>
-            <h1 class="text-5xl font-bold mb-4">About</h1>
+<HeroLayout
+    title="Nick Ronnei"
+    header={{ transparent: false, sticky: true }}
+    bgImageClass='bg-hero-pattern'
+    bgModifiers={modifiers}
+>
+    <div class={`${contentClasses}`}>
+        <div class="bg-gray-300/50 px-6">
+            <h1 class="text-5xl font-bold my-4">About</h1>
             <p class="text-lg mb-4">
                 This website is mostly for me, but maybe it can be useful to you, too.
             </p>
@@ -28,5 +32,5 @@ const contentClasses = [
                 of the things I've learned over the years working in tech.
             </p>
         </div>
-    </Hero>
+    </div>
 </HeroLayout>
