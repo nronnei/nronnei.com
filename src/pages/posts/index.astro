@@ -17,7 +17,7 @@ allPosts.sort((a, b) => {
   return score;
 })
 ---
-<CollectionLayout collectionType="posts" extraContainerClasses={["max-w-screen-lg"]}>
+<CollectionLayout collectionType="Posts" extraContainerClasses={["max-w-screen-lg"]}>
   <ul class="grid grid-cols-1 md:grid-cols-2">
     {
       allPosts.map((post) => ( <BlogPostCard post={post} /> ))
