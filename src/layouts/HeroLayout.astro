@@ -5,18 +5,19 @@ import Layout from './Layout.astro';
 
 interface Props {
   title: string
-  bgImageClass?: string
+  bgImageSlug: string,
   bgModifiers?: string[]
+  altText?: string,
   header?: { transparent?: boolean, sticky?: boolean }
 }
 
-const { title, header = {}, bgImageClass = 'bg-hero-pattern', bgModifiers = [] } = Astro.props;
+const { title, header = {},  bgImageSlug, bgModifiers = [] } = Astro.props;
 const mergedHeader = Object.assign({}, { transparent: true, sticky: true }, header)
 ---
 
 <Layout title={title} header={mergedHeader}>
   <main>
-    <Hero bgImageClass={bgImageClass} modifiers={bgModifiers}>
+    <Hero bgImageSlug={bgImageSlug} modifiers={bgModifiers}>
       <slot />
       <Footer />
     </Hero>

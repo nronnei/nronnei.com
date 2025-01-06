@@ -1,6 +1,5 @@
 ---
 import HeroLayout from '../layouts/HeroLayout.astro';
-import Hero from '../components/Hero.astro'
 
 const modifiers = ["saturate-150", "flex", "flex-col"];
 const contentClasses = [
@@ -15,8 +14,8 @@ const contentClasses = [
 
 ---
 
-<HeroLayout title="Nick Ronnei" bgImageClass='bg-hero-pattern-alt' bgModifiers={modifiers}>
-    <div class={`${contentClasses} flex flex-col justify-center text-right text-black`}>
+<HeroLayout title="Nick Ronnei" bgImageSlug='north-table' bgModifiers={modifiers}>
+    <div class={`${contentClasses} justify-center text-right text-black`}>
         <h1 class="text-5xl md:text-7xl font-bold">Nick Ronnei</h1>
         <p class="text-lg">Full Stack & Cloud Engineer, Aspiring Architect</p>
     </div>

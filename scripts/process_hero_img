@@ -1,0 +1,6 @@
+IMG_SLUG="$1"
+
+convert -quality 70 -scale 25% $IMG_SLUG.jpg $IMG_SLUG.webp
+convert -quality 70 -scale 40% $IMG_SLUG.jpg $IMG_SLUG-sm.webp
+convert -quality 70 -scale 75% $IMG_SLUG.jpg $IMG_SLUG-md.webp
+convert -quality 80 $IMG_SLUG.jpg $IMG_SLUG-lg.webp

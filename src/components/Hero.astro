@@ -1,24 +1,33 @@
 ---
 interface Props {
-  bgImageClass: string | undefined,
-  modifiers: string[] | undefined,
+  bgImageSlug: string,
+  altText?: string,
+  modifiers?: string[],
 }
 
-const { bgImageClass = 'bg-hero-pattern', modifiers } = Astro.props;
+const { modifiers, bgImageSlug, altText } = Astro.props;
 const modifierClasses = modifiers || ["saturate-150", "contrast-125", "dark:brightness:50"]
 
 // Let bg stuff be overridden, but not the flex grow.
 const classes = [
-    "bg-cover",
+    "z-zero",
+    "absolute",
     ...modifierClasses,
-    bgImageClass,
     "h-screen",
-    "w-screen"
+    "w-screen",
 ].join(" ");
 ---
 
 <html>
-    <section class={classes}>
-        <slot />
-    </section>
+    <div class={classes}>
+        <picture>
+            <source media="(min-width:640px)" srcset={`${bgImageSlug}-sm.webp`}>
+            <source media="(min-width:768px)" srcset={`${bgImageSlug}-md.webp`}>
+            <source media="(min-width:1024px)" srcset={`${bgImageSlug}-lg.webp`}>
+            <img src={`${bgImageSlug}.webp`} alt={altText} class={classes}>
+        </picture>
+        <div class="z-10 h-screen w-screen flex flex-col">
+            <slot />
+        </div>
+    </div>
 </html>
