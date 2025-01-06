@@ -10,17 +10,19 @@ const contentClasses = [
     "flex-col",
     "flex-grow",
     "justify-center",
+    "max-w-screen-md",
+    "lg:max-w-screen-lg",
 ].join(" ")
 
 ---
 
 <HeroLayout title="Nick Ronnei" bgImageSlug='north-table' bgModifiers={modifiers}>
     <div class={`${contentClasses} justify-center text-right text-black`}>
-        <h1 class="text-5xl md:text-7xl font-bold">Nick Ronnei</h1>
+        <h1 class="text-5xl lg:text-7xl mt-4 md:mt-16 font-bold">Nick Ronnei</h1>
         <p class="text-lg">Full Stack & Cloud Engineer, Aspiring Architect</p>
     </div>
     <div class={`${contentClasses} text-white`}>
-        <h2 class="text-3xl md:text-4xl font-bold">Thanks for stopping by</h2>
+        <h2 class="text-3xl lg:text-4xl font-bold">Thanks for stopping by</h2>
         <p>Check out my blog, projects, or resume.</p>
     </div>
 </HeroLayout>

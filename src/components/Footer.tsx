@@ -21,7 +21,7 @@ const linkClasses = [
 
 export function Footer() {
     return (
-        <footer class='container mx-auto text-center py-8 dark:text-white flex-none'>
+        <footer class='container mx-auto text-center py-4 lg:py-8 dark:text-white flex-none'>
             <ul class='text-2xl'>
                 <For each={socialLinks()}>
                     {({ title, url, external, icon }) => {

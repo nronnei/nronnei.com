@@ -3,23 +3,31 @@ interface Props {
   bgImageSlug: string,
   altText?: string,
   modifiers?: string[],
+  containerClasses?: string[],
 }
 
-const { modifiers, bgImageSlug, altText } = Astro.props;
-const modifierClasses = modifiers || ["saturate-150", "contrast-125", "dark:brightness:50"]
+const {
+    modifiers = ["saturate-150", "contrast-125", "dark:brightness:50"],
+    containerClasses = ["z-0", "absolute", "flex", "flex-col"],
+    bgImageSlug,
+    altText
+} = Astro.props;
 
-// Let bg stuff be overridden, but not the flex grow.
-const classes = [
-    "z-zero",
-    "absolute",
-    ...modifierClasses,
+const allContainerClasses = [
+    ...containerClasses,
     "h-screen",
     "w-screen",
+].join(" ");
+
+const classes = [
+    "absolute",
+    "object-cover",
+    ...modifiers,
 ].join(" ");
 ---
 
 <html>
-    <div class={classes}>
+    <div class={allContainerClasses}>
         <picture>
             <source media="(min-width:640px)" srcset={`${bgImageSlug}-sm.webp`}>
             <source media="(min-width:768px)" srcset={`${bgImageSlug}-md.webp`}>
