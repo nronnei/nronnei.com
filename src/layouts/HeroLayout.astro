@@ -13,12 +13,11 @@ interface Props {
 
 const { title, header = {},  bgImageSlug, bgModifiers = [] } = Astro.props;
 const mergedHeader = Object.assign({}, { transparent: true, sticky: true }, header)
-const mergedModifiers = mergedHeader.transparent ? bgModifiers : [...bgModifiers, "mt-8"]
 ---
 
 <Layout title={title} header={mergedHeader}>
   <main>
-    <Hero bgImageSlug={bgImageSlug} modifiers={mergedModifiers}>
+    <Hero bgImageSlug={bgImageSlug} modifiers={bgModifiers}>
       <slot />
       <Footer />
     </Hero>
