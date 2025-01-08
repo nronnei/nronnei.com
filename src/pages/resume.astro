@@ -1,4 +1,5 @@
 ---
+import { Link } from '../components/Link';
 import HeroLayout from '../layouts/HeroLayout.astro';
 
 const modifiers = ["saturate-150"];
@@ -9,6 +10,7 @@ const contentClasses = [
     "flex-col",
     "flex-grow",
     "justify-center",
+    "justify-self-center"
 ].join(" ")
 
 ---
@@ -21,14 +23,11 @@ const contentClasses = [
 >
     <div class={`${contentClasses}`}>
         <div class="bg-gray-300/50 px-6">
-            <h1 class="text-5xl font-bold my-4">About</h1>
+            <h1 class="text-5xl font-bold my-4">Resume</h1>
             <p class="text-lg mb-4">
-                This website is mostly for me, but maybe it can be useful to you, too.
-            </p>
-            <p class="text-lg mb-4">
-                I built this as a way to keep pushing myself to learn new things, and
-                as a way to practice explaining both the "what" and the "why" behind some
-                of the things I've learned over the years working in tech.
+                Check back soon for a web-based resume. In the meantime, you can
+                <Link url="NicholasRonnei_Resume_2024.pdf" text="download this static one"/>
+                or <a href="https://linkedin.com/in/nronnei">check me out on LinkedIn.</a>
             </p>
         </div>
     </div>

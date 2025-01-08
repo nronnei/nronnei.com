@@ -17,7 +17,7 @@ export function MainNav(props: MainNavProps) {
     const { linkColors = defaultLinkColors, position = "right" } = props
     const [navItems, setNavItems] = createSignal<LinkData[]>([
         { title: "Home", url: "/"},
-        { title: "About", url: "/about"},
+        { title: "Resume", url: "/resume"},
         { title: "Projects", url: "/projects"},
         { title: "Blog", url: "/posts"},
     ])
